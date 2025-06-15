@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Pergunte a Kenny 🦈</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #e0f7fa;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 2.5em;
+      color: #00796b;
+    }
+    img {
+      width: 200px;
+      margin: 20px auto;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+      margin: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #00796b;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #004d40;
+    }
+    .result {
+      font-size: 24px;
+      margin-top: 30px;
+      color: #004d40;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pergunte a Kenny 🦈</h1>
+  <img src="https://i.pinimg.com/474x/bc/65/28/bc65285b146878df64ab8bc3eff9de6c.jpg" alt="Tubarão Kenny">
+  <p>Digite duas opções e deixe a Kenny decidir!</p>
+  <input type="text" id="opcao1" placeholder="Opção 1">
+  <input type="text" id="opcao2" placeholder="Opção 2"><br>
+  <button onclick="decidir()">Perguntar o Kenny</button>
+  <div class="result" id="resultado"></div>
+
+  <script>
+    function decidir() {
+      const op1 = document.getElementById("opcao1").value.trim();
+      const op2 = document.getElementById("opcao2").value.trim();
+
+      if (!op1 || !op2) {
+        document.getElementById("resultado").innerText = "Digite duas opções!";
+        return;
+      }
+
+      const escolha = Math.random() < 0.5 ? op1 : op2;
+      document.getElementById("resultado").innerText = "Kenny escolheu: " + escolha + "!";
+    }
+  </script>
+</body>
+</html>
