@@ -143,11 +143,11 @@
       const chanceEngracada = Math.random();
       let resultado;
 
-      if (chanceEngracada < 0.2) {
+      if (chanceEngracada < 0.3) {
         const resposta = respostasEngracadas[Math.floor(Math.random() * respostasEngracadas.length)];
         resultado = "Kenny disse: " + resposta;
       } else {
-        const escolha = Math.random() < 0.5 ? op1 : op2;
+        const escolha = Math.random() < 0.7 ? op1 : op2;
         resultado = "Kenny escolheu: " + escolha + "!";
       }
 
