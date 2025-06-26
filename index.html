@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pergunte a Kenny 🦈</title>
   <style>
     body {
@@ -51,6 +51,7 @@
     button:hover {
       background-color: #004d40;
     }
+
     /* POPUP STYLES */
     #popup {
       display: none;
@@ -60,8 +61,7 @@
       height: 100%;
       background: rgba(0, 0, 0, 0.5);
       z-index: 9999;
-      align-items: center;
-      justify-content: center;
+      /* flex será ativado via JS para centralizar */
     }
 
     .popup-content {
@@ -69,6 +69,7 @@
       padding: 30px;
       border-radius: 12px;
       max-width: 300px;
+      width: 90vw; /* responsivo no celular */
       font-size: 20px;
       color: #004d40;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
@@ -79,6 +80,14 @@
       margin-top: 20px;
       background-color: #00796b;
       color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .popup-content button:hover {
+      background-color: #004d40;
     }
 
     @keyframes fadeIn {
@@ -89,10 +98,10 @@
 </head>
 <body>
   <h1>Pergunte a Kenny 🦈</h1>
-  <img src="https://i.pinimg.com/474x/bc/65/28/bc65285b146878df64ab8bc3eff9de6c.jpg" alt="Tubarão Kenny">
+  <img src="https://i.pinimg.com/474x/bc/65/28/bc65285b146878df64ab8bc3eff9de6c.jpg" alt="Tubarão Kenny" />
   <p>Digite duas opções e deixe a Kenny decidir!</p>
-  <input type="text" id="opcao1" placeholder="Opção 1">
-  <input type="text" id="opcao2" placeholder="Opção 2"><br>
+  <input type="text" id="opcao1" placeholder="Opção 1" />
+  <input type="text" id="opcao2" placeholder="Opção 2" /><br />
   <button onclick="decidir()">Perguntar o Kenny</button>
 
   <!-- POPUP -->
@@ -148,7 +157,9 @@
 
     function mostrarPopup() {
       const popup = document.getElementById("popup");
-      popup.style.display = "flex"; // <-- ESSENCIAL!
+      popup.style.display = "flex";
+      popup.style.alignItems = "center";
+      popup.style.justifyContent = "center";
     }
 
     function fecharPopup() {
@@ -158,4 +169,3 @@
   </script>
 </body>
 </html>
-
