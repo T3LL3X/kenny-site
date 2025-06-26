@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,14 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pergunte a Kenny 🦈</title>
 
-  <!-- Favicon para navegadores modernos -->
+  <!-- Favicon padrão -->
   <link rel="icon" type="image/png" href="https://i.imgur.com/4Z984VK.png">
-
-  <!-- Favicon tradicional para compatibilidade máxima -->
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-  <!-- Favicon para Apple (iOS) -->
-  <link rel="apple-touch-icon" href="https://i.imgur.com/4Z984VK.png">
+  <!-- Ícone para a tela inicial no iOS -->
+  <link rel="apple-touch-icon" sizes="180x180" href="https://i.imgur.com/4Z984VK.png">
+
+  <!-- Ativar modo "app" no iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Kenny">
 
   <style>
     body {
@@ -63,7 +65,6 @@
       background-color: #004d40;
     }
 
-    /* POPUP STYLES */
     #popup {
       display: none;
       position: fixed;
@@ -114,7 +115,6 @@
   <input type="text" id="opcao2" placeholder="Opção 2" /><br />
   <button onclick="decidir()">Perguntar o Kenny</button>
 
-  <!-- POPUP -->
   <div id="popup">
     <div class="popup-content">
       <div id="respostaPopup"></div>
