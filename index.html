@@ -51,11 +51,39 @@
     button:hover {
       background-color: #004d40;
     }
-    .result {
-      font-size: 1.3em;
-      margin-top: 25px;
+    /* POPUP STYLES */
+    #popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 300px;
+      font-size: 20px;
       color: #004d40;
-      font-weight: bold;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .popup-content button {
+      margin-top: 20px;
+      background-color: #00796b;
+      color: white;
+    }
+
+    @keyframes fadeIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
   </style>
 </head>
@@ -64,23 +92,70 @@
   <img src="https://i.pinimg.com/474x/bc/65/28/bc65285b146878df64ab8bc3eff9de6c.jpg" alt="Tubarão Kenny">
   <p>Digite duas opções e deixe a Kenny decidir!</p>
   <input type="text" id="opcao1" placeholder="Opção 1">
-  <input type="text" id="opcao2" placeholder="Opção 2">
-  <button onclick="decidir()">Perguntar a Kenny</button>
-  <div class="result" id="resultado"></div>
+  <input type="text" id="opcao2" placeholder="Opção 2"><br>
+  <button onclick="decidir()">Perguntar o Kenny</button>
+
+  <!-- POPUP -->
+  <div id="popup">
+    <div class="popup-content">
+      <div id="respostaPopup"></div>
+      <button onclick="fecharPopup()">OK</button>
+    </div>
+  </div>
 
   <script>
     function decidir() {
       const op1 = document.getElementById("opcao1").value.trim();
       const op2 = document.getElementById("opcao2").value.trim();
+      const respostaDiv = document.getElementById("respostaPopup");
 
       if (!op1 || !op2) {
-        document.getElementById("resultado").innerText = "Digite duas opções!";
+        respostaDiv.innerText = "Digite duas opções!";
+        mostrarPopup();
         return;
       }
 
-      const escolha = Math.random() < 0.5 ? op1 : op2;
-      document.getElementById("resultado").innerText = "Kenny escolheu: " + escolha + "!";
+      const respostasEngracadas = [
+        "Escolhe você!",
+        "Tô soninho... quero mimir 😴",
+        "hmmm... os dois!",
+        "Hoje não seiti, tô indecisa 🦈",
+        "Vai no mais legalti!",
+        "Pergunta pra mamãe!",
+        "Pergunta pro papai",
+        "A mamãe que escolhe 🦈",
+        "O papai que escolhe 🦈",
+        "hmmmmmmmmmm não seiti",
+        "Só consigo decidir se ganhar uma banana 🍌",
+        "Banana 🍌",
+        "🍌"
+      ];
+
+      const chanceEngracada = Math.random();
+      let resultado;
+
+      if (chanceEngracada < 0.2) {
+        const resposta = respostasEngracadas[Math.floor(Math.random() * respostasEngracadas.length)];
+        resultado = "Kenny disse: " + resposta;
+      } else {
+        const escolha = Math.random() < 0.5 ? op1 : op2;
+        resultado = "Kenny escolheu: " + escolha + "!";
+      }
+
+      respostaDiv.innerText = resultado;
+      mostrarPopup();
+    }
+
+    function mostrarPopup() {
+      const popup = document.getElementById("popup");
+      popup.style.display = "flex"; // <-- ESSENCIAL!
+    }
+
+    function fecharPopup() {
+      const popup = document.getElementById("popup");
+      popup.style.display = "none";
     }
   </script>
 </body>
 </html>
+
